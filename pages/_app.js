@@ -1,7 +1,12 @@
-import '../styles/globals.css'
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+    return (
+        <div>
+            <Component {...pageProps} />
+            <footer>&#169; PunGrumpy</footer>
+        </div>
+    );
 }
 
-export default MyApp
+export default MyApp;
