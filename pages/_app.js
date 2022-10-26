@@ -4,7 +4,6 @@ function MyApp({ Component, pageProps }) {
     return (
         <div>
             <Component {...pageProps} />
-            <footer>&#169; PunGrumpy</footer>
         </div>
     );
 }
