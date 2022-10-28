@@ -10,6 +10,7 @@
     font-weight: 800;
     color: var(--text-black);
 
+    font-family: 'M PLUS Rounded 1c';
     font-size: 3rem /* 48px */;
     line-height: 1;
 }
