@@ -28,9 +28,8 @@ export default function Home() {
                         <Card
                             key={coffeeStore.id}
                             name={coffeeStore.name}
-                            imgUrl="/static/hero-image.png"
-                            // imgUrl={coffeeStore.imgUrl}
-                            href={coffeeStore.websiteUrl}
+                            imgUrl={coffeeStore.imgUrl}
+                            href={`/coffee-cafe/${coffeeStore.id}`}
                             className={styles.card}
                         />
                     ))}
