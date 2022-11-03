@@ -21,7 +21,6 @@
 
 .cardLayout {
     display: grid;
-    margin-top: 7.5rem; /* 120px */
     grid-template-columns: repeat(1, minmax(0, 1fr));
     column-gap: 1.5rem /* 24px */;
     row-gap: 1.5rem /* 24px */;
@@ -29,6 +28,14 @@
 
 .card {
     justify-content: center;
+}
+
+.heading2 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    padding-bottom: 2rem;
+    margin-top: 6.5rem;
+    color: var(--text-white-100);
 }
 
 /** Breakpoints:
