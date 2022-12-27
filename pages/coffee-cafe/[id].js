@@ -67,36 +67,18 @@ const CoffeeCafe = (props) => {
                 </div>
                 <div className={cls('glass', styles.col2)}>
                     <div className={styles.iconWrapper}>
-                        <Image
-                            src="/static/icons/places.svg"
-                            width="24"
-                            height="24"
-                            alt="places"
-                        />
+                        <Image src="/static/icons/places.svg" width="24" height="24" alt="places" />
                         <p className={styles.text}>{address}</p>
                     </div>
                     <div className={styles.iconWrapper}>
-                        <Image
-                            src="/static/icons/nearMe.svg"
-                            width="24"
-                            height="24"
-                            alt="nearMe"
-                        />
+                        <Image src="/static/icons/nearMe.svg" width="24" height="24" alt="nearMe" />
                         <p className={styles.text}>{neighbourhood}</p>
                     </div>
                     <div className={styles.iconWrapper}>
-                        <Image
-                            src="/static/icons/star.svg"
-                            width="24"
-                            height="24"
-                            alt="star"
-                        />
+                        <Image src="/static/icons/star.svg" width="24" height="24" alt="star" />
                         <p className={styles.text}>1</p>
                     </div>
-                    <button
-                        className={styles.upvoteButton}
-                        onClick={handlerUpVoteButton}
-                    >
+                    <button className={styles.upvoteButton} onClick={handlerUpVoteButton}>
                         Up vote!
                     </button>
                 </div>

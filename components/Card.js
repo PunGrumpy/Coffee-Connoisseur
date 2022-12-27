@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import cls from 'classnames';
 
-const Card = props => {
+const Card = (props) => {
     return (
         <Link className={styles.cardLink} href={props.href}>
             <div className={cls('glass', styles.container)}>

@@ -1,6 +1,6 @@
 import styles from './Banner.module.css';
 
-const Banner = props => {
+const Banner = (props) => {
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>

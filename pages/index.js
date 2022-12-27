@@ -14,7 +14,6 @@ export async function getStaticProps(context) {
 }
 
 export default function Home(props) {
-    console.log('props', props);
     const handleOnBannerBtnClick = () => {
         console.log('Banner button clicked');
     };
@@ -36,7 +35,7 @@ export default function Home(props) {
                     <>
                         <h2 className={styles.heading2}>Coffee Stores</h2>
                         <div className={styles.cardLayout}>
-                            {props.coffeeStores.map(coffeeStore => (
+                            {props.coffeeStores.map((coffeeStore) => (
                                 <Card
                                     key={coffeeStore.id}
                                     name={coffeeStore.name}
