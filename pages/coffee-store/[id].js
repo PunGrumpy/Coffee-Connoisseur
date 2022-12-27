@@ -8,6 +8,7 @@ import coffeeStoresData from '../../data/coffee-stores.json';
 import { fetchCoffeeStores } from '../../lib/coffee-stores';
 
 import styles from '../../styles/coffee-stores.module.css';
+import react from 'react';
 
 export async function getStaticProps(staticProps) {
     const params = staticProps.params;
@@ -43,7 +44,7 @@ const CoffeeCafe = (props) => {
 
     if (router.isFallback === true) return <div>Loading...</div>;
 
-    const { name, address, neighbourhood, imgUrl } = props.coffeeStore;
+    const { name, location, related_places, imgUrl } = props.coffeeStore;
 
     const handlerUpVoteButton = () => {
         console.log('handler upvote');
@@ -76,11 +77,17 @@ const CoffeeCafe = (props) => {
                 <div className={cls('glass', styles.col2)}>
                     <div className={styles.iconWrapper}>
                         <Image src="/static/icons/places.svg" width="24" height="24" alt="places" />
-                        <p className={styles.text}>{address}</p>
+                        <p className={styles.text}>
+                            {location.address ? location.address : location.formatted_address}
+                        </p>
                     </div>
                     <div className={styles.iconWrapper}>
                         <Image src="/static/icons/nearMe.svg" width="24" height="24" alt="nearMe" />
-                        <p className={styles.text}>{neighbourhood}</p>
+                        <p className={styles.text}>
+                            {location.neighborhood
+                                ? location?.neighborhood
+                                : related_places.parent?.name}
+                        </p>
                     </div>
                     <div className={styles.iconWrapper}>
                         <Image src="/static/icons/star.svg" width="24" height="24" alt="star" />
