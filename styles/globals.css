@@ -23,6 +23,17 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     color: #373b64;
+
+    animation: preload 1.2s ease-in-out forwards;
+}
+
+@keyframes preload {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @font-face {
