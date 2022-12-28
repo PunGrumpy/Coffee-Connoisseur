@@ -11,13 +11,15 @@ import styles from '../../styles/coffee-stores.module.css';
 
 export async function getStaticProps(staticProps) {
     const params = staticProps.params;
+
     const coffeeStores = await fetchCoffeeStores();
+    const findCoffeeStoreById = coffeeStores.find(
+        (coffeeStore) => coffeeStore.id.toString() === params.id
+    );
 
     return {
         props: {
-            coffeeStore: coffeeStores.find((coffeeStore) => {
-                return coffeeStore.id.toString() === params.id;
-            }),
+            coffeeStore: findCoffeeStoreById ? findCoffeeStoreById : {},
         },
     };
 }
@@ -41,7 +43,15 @@ export async function getStaticPaths() {
 const CoffeeCafe = (props) => {
     const router = useRouter();
 
-    if (router.isFallback === true) return <div>Loading...</div>;
+    if (router.isFallback === true)
+        return (
+            <div className="loading">
+                Loading
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+            </div>
+        );
 
     const { name, address, neighborhood, imgUrl } = props.coffeeStore;
 
