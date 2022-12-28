@@ -23,6 +23,17 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     color: #373b64;
+
+    animation: loading 1s ease-in-out infinite alternate;
+}
+
+@keyframes loading {
+    0% {
+        background-color: #373b64;
+    }
+    100% {
+        background-color: #f5f5f5;
+    }
 }
 
 @font-face {

@@ -40,7 +40,7 @@
     cursor: pointer;
     color: white;
     outline: 0;
-    border: 0px;
+    border: none;
 
     padding-top: 1rem /* 16px */;
     padding-bottom: 1rem /* 16px */;
@@ -48,10 +48,13 @@
     line-height: 1.75rem /* 28px */;
     padding-left: 2.5rem /* 40px */;
     padding-right: 2.5rem /* 40px */;
+
+    border-radius: 15px;
+    transition-duration: 0.3s;
 }
 
 .button:hover {
-    background-color: var(--text-purple-dark);
+    background-color: var(--text-purple);
 }
 
 /** 

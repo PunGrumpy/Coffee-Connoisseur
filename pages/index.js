@@ -1,10 +1,16 @@
 import Head from 'next/head';
 import Image from 'next/image';
+
 import Banner from '../components/Banner';
 import Card from '../components/Card';
+
 import styles from '../styles/Home.module.css';
+
 import coffeeStoresData from '../data/coffee-stores.json';
 import { fetchCoffeeStores } from '../lib/coffee-stores';
+
+import useTrackLocation from '../hooks/use-track-location';
+import { useEffect } from 'react';
 
 export async function getStaticProps(context) {
     const coffeeStores = await fetchCoffeeStores();
@@ -17,8 +23,30 @@ export async function getStaticProps(context) {
 }
 
 export default function Home(props) {
+    const { handlerTrackLocation, latLong, locationErrorMsg, isFindingLocation } =
+        useTrackLocation();
+
+    // console.log({ latLong, locationErrorMsg });
+
+    useEffect(() => {
+        async function setCoffeeStoresByLocation() {
+            if (latLong) {
+                try {
+                    const fetchedCoffeeStores = await fetchCoffeeStores(latLong, 6);
+                    console.log({ fetchedCoffeeStores });
+                    // set coffee stores
+                } catch (error) {
+                    // set error
+                    console.log({ error });
+                }
+            }
+        }
+        setCoffeeStoresByLocation();
+    }, [latLong]);
+
     const handleOnBannerBtnClick = () => {
         console.log('Banner button clicked');
+        handlerTrackLocation();
     };
 
     return (
@@ -30,12 +58,21 @@ export default function Home(props) {
             </Head>
 
             <main className={styles.main}>
-                <Banner buttonText="View Cafe Nearby" handleOnClick={handleOnBannerBtnClick} />
+                <Banner
+                    buttonText={isFindingLocation ? 'Locating...' : 'View Cafe Nearby'}
+                    handleOnClick={handleOnBannerBtnClick}
+                />
+                {locationErrorMsg && (
+                    <p>
+                        Something went wrong:{' '}
+                        <span style={{ fontWeight: '600' }}>{locationErrorMsg}</span>
+                    </p>
+                )}
                 <div className={styles.heroImage}>
                     <Image src="/static/hero-image.png" alt="HeroImg" width={700} height={400} />
                 </div>
                 {props.coffeeStores.length > 0 && (
-                    <>
+                    <div className={styles.sectionWrapper}>
                         <h2 className={styles.heading2}>Coffee Stores</h2>
                         <div className={styles.cardLayout}>
                             {props.coffeeStores.map((coffeeStore) => (
@@ -51,7 +88,7 @@ export default function Home(props) {
                                 />
                             ))}
                         </div>
-                    </>
+                    </div>
                 )}
             </main>
         </div>
