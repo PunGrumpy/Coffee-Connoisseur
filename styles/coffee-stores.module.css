@@ -61,7 +61,6 @@
     align-self: center;
     margin-top: 4rem /* 64px */;
     color: rgba(55, 59, 100, 1);
-    transition: 0.3s;
 }
 
 .iconWrapper {
@@ -92,10 +91,8 @@
     color: white;
     outline: 0;
     border: 0px;
-    border-radius: 10px;
 
     font-size: 1rem;
-    transition: 0.3s;
 }
 
 .upvoteButton:hover {
