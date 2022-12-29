@@ -1,0 +1,130 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.container {
+    background-color: #99ffa3;
+    background-image: radial-gradient(at 2% 67%, hsla(110, 94%, 66%, 1) 0px, transparent 50%),
+        radial-gradient(at 86% 66%, hsla(255, 77%, 67%, 1) 0px, transparent 50%),
+        radial-gradient(at 7% 1%, hsla(200, 88%, 61%, 1) 0px, transparent 50%),
+        radial-gradient(at 36% 24%, hsla(269, 73%, 76%, 1) 0px, transparent 50%),
+        radial-gradient(at 24% 70%, hsla(311, 82%, 61%, 1) 0px, transparent 50%),
+        radial-gradient(at 23% 37%, hsla(327, 64%, 64%, 1) 0px, transparent 50%),
+        radial-gradient(at 89% 29%, hsla(244, 77%, 71%, 1) 0px, transparent 50%);
+    animation: background 1s ease-in-out;
+
+    /* center */
+    background-position: 50% 50%;
+    background-size: 200% 200%;
+    background-repeat: no-repeat;
+
+    /* center text */
+    text-align: center;
+}
+
+@keyframes background {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+.header {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #000;
+    animation: header 1s ease-in-out;
+}
+
+@keyframes header {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #000;
+    animation: text 1s ease-in-out;
+}
+
+@keyframes text {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.button {
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(100px);
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    animation: button 1s ease-in-out;
+}
+
+.button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.button:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 rgba(0, 0, 0);
+}
+
+@keyframes button {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        background-size: 300% 300%;
+    }
+
+    .header {
+        font-size: 2rem;
+    }
+
+    .text {
+        font-size: 1rem;
+    }
+
+    .button {
+        font-size: 0.8rem;
+    }
+}
