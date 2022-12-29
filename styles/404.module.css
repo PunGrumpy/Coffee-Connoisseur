@@ -16,7 +16,6 @@
         radial-gradient(at 51% 100%, hsla(242, 100%, 70%, 1) 0px, transparent 50%),
         radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 1) 0px, transparent 50%);
     animation: move 2.5s ease-in-out infinite alternate;
-    backdrop-filter: blur(100px);
 
     background-position: 50% 50%;
     background-size: 200% 200%;
@@ -82,8 +81,9 @@
     border-radius: 5px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(100px);
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer;
+
     transition: all 0.3s ease-in-out;
     animation: button 1s ease-in-out;
 }
