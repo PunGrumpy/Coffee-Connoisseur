@@ -10,7 +10,7 @@ import { fetchCoffeeStores } from '../lib/coffee-stores';
 
 import useTrackLocation from '../hooks/use-track-location';
 import { useContext, useEffect, useState } from 'react';
-import { ACTION_TYPES, StoreContext } from './_app';
+import { ACTION_TYPES, StoreContext } from '../store/store-context';
 
 export async function getStaticProps(context) {
     const coffeeStores = await fetchCoffeeStores();
@@ -109,7 +109,7 @@ export default function Home(props) {
 
                 {props.coffeeStores.length > 0 && (
                     <div className={styles.sectionWrapper}>
-                        <h2 className={styles.heading2}>Coffee stores</h2>
+                        <h2 className={styles.heading2}>New York coffee stores</h2>
                         <div className={styles.cardLayout}>
                             {props.coffeeStores.map((coffeeStore) => (
                                 <Card

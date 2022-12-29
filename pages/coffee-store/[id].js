@@ -9,7 +9,7 @@ import cls from 'classnames';
 import styles from '../../styles/coffee-stores.module.css';
 import { fetchCoffeeStores } from '../../lib/coffee-stores';
 
-import { StoreContext } from '../_app';
+import { StoreContext } from '../../store/store-context';
 
 import { isEmpty } from '../../utils';
 
@@ -44,13 +44,7 @@ export async function getStaticPaths() {
 
 const CoffeeStore = (initialProps) => {
     const router = useRouter();
-    if (router.isFallback) {
-        return (
-            <div className="spinner-wrapper">
-                <div className="spinner" />
-            </div>
-        );
-    }
+
     const id = router.query.id;
 
     const [coffeeStore, setCoffeeStore] = useState(initialProps.coffeeStore);
@@ -69,6 +63,14 @@ const CoffeeStore = (initialProps) => {
             }
         }
     }, [id]);
+
+    if (router.isFallback) {
+        return (
+            <div className="spinner-wrapper">
+                <div className="spinner" />
+            </div>
+        );
+    }
 
     const { name, address, neighborhood, imgUrl } = coffeeStore;
 
