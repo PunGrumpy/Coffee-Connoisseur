@@ -62,7 +62,7 @@ const CoffeeStore = (initialProps) => {
                 setCoffeeStore(findCoffeeStoreById);
             }
         }
-    }, [id]);
+    }, [coffeeStores, id, initialProps.coffeeStore]);
 
     if (router.isFallback) {
         return (
