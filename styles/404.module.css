@@ -16,18 +16,17 @@
         radial-gradient(at 24% 70%, hsla(311, 82%, 61%, 1) 0px, transparent 50%),
         radial-gradient(at 23% 37%, hsla(327, 64%, 64%, 1) 0px, transparent 50%),
         radial-gradient(at 89% 29%, hsla(244, 77%, 71%, 1) 0px, transparent 50%);
-    animation: background 1s ease-in-out;
+    animation: gradientMove 2.5s ease-in-out infinite alternate;
+    backdrop-filter: blur(100px);
 
-    /* center */
     background-position: 50% 50%;
     background-size: 200% 200%;
     background-repeat: no-repeat;
 
-    /* center text */
     text-align: center;
 }
 
-@keyframes background {
+@keyframes gradientMove {
     0% {
         background-position: 0 0;
     }
