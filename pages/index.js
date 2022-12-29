@@ -6,11 +6,11 @@ import Card from '../components/Card';
 
 import styles from '../styles/Home.module.css';
 
-import coffeeStoresData from '../data/coffee-stores.json';
 import { fetchCoffeeStores } from '../lib/coffee-stores';
 
 import useTrackLocation from '../hooks/use-track-location';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ACTION_TYPES, StoreContext } from './_app';
 
 export async function getStaticProps(context) {
     const coffeeStores = await fetchCoffeeStores();
@@ -23,11 +23,14 @@ export async function getStaticProps(context) {
 }
 
 export default function Home(props) {
-    const { handlerTrackLocation, latLong, locationErrorMsg, isFindingLocation } =
-        useTrackLocation();
+    const { handlerTrackLocation, locationErrorMsg, isFindingLocation } = useTrackLocation();
 
-    const [coffeeStores, setCoffeeStores] = useState('');
+    // const [coffeeStores, setCoffeeStores] = useState('');
     const [coffeeStoresError, setCoffeeStoresError] = useState(null);
+
+    const { dispatch, state } = useContext(StoreContext);
+
+    const { coffeeStores, latLong } = state;
 
     useEffect(() => {
         async function setCoffeeStoresByLocation() {
@@ -36,7 +39,11 @@ export default function Home(props) {
                     const fetchedCoffeeStores = await fetchCoffeeStores(latLong, 6);
                     console.log({ fetchedCoffeeStores });
                     // set coffee stores
-                    setCoffeeStores(fetchedCoffeeStores);
+                    // setCoffeeStores(fetchedCoffeeStores);
+                    dispatch({
+                        type: ACTION_TYPES.SET_COFFEE_STORES,
+                        payload: { coffeeStores: fetchedCoffeeStores },
+                    });
                 } catch (error) {
                     // set error
                     console.log({ error });
@@ -45,7 +52,7 @@ export default function Home(props) {
             }
         }
         setCoffeeStoresByLocation();
-    }, [latLong]);
+    }, [dispatch, latLong]);
 
     const handleOnBannerBtnClick = () => {
         console.log('Banner button clicked');
