@@ -114,3 +114,10 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
+
+/* phone screen: small hero image */
+@media (max-width: 768px) {
+    .heroImage {
+        display: none;
+    }
+}
