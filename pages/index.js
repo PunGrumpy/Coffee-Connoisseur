@@ -36,14 +36,17 @@ export default function Home(props) {
         async function setCoffeeStoresByLocation() {
             if (latLong) {
                 try {
-                    const fetchedCoffeeStores = await fetchCoffeeStores(latLong, 6);
-                    console.log({ fetchedCoffeeStores });
-                    // set coffee stores
+                    const response = await fetch(
+                        `/api/getCoffeeStoresByLocation?latLong=${latLong}&limit=6`
+                    );
+
+                    const fetchedCoffeeStores = await response.json();
                     // setCoffeeStores(fetchedCoffeeStores);
                     dispatch({
                         type: ACTION_TYPES.SET_COFFEE_STORES,
                         payload: { coffeeStores: fetchedCoffeeStores },
                     });
+                    setCoffeeStoresError('');
                 } catch (error) {
                     // set error
                     console.log({ error });
